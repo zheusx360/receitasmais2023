@@ -1,14 +1,10 @@
 import React from 'react';
+import { Login } from './src/modules/auth/login';
 
-import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 function App(): JSX.Element {
-  console.tron.log('Olá reactotron');
-  return (
-    <View>
-      <Text>RECEITAS MAIS APP 2023</Text>
-    </View>
-  );
+  return <Login />;
 }
 
 export default App;
