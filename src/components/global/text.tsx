@@ -1,76 +1,25 @@
 import { View, Text } from 'react-native';
-
 interface ITypes {
   children: string;
-  bgColor?: string;
-  size?: number;
-  color?: string;
-  weight?: string;
-  textAlign?: string;
+  type?: string;
+  styles?: string;
 }
-export const ComponentTitle = ({
+
+export const AtomTextComponent = ({
   children,
-  size,
-  weight,
-  color,
-  textAlign,
+  type = 'title',
+  styles,
 }: ITypes) => {
+  const textType: { [key: string]: string } = {
+    title: `text-lg font-bold text-slate-800`,
+    subtitle: `text-base font-semibold text-slate-600`,
+    label: `text-lg font-semibold text-green-600`,
+    textbutton: `text-lg font-semibold text-pink-700`,
+  };
+
   return (
     <View>
-      <Text
-        className={`
-        ${size ? size : 'text-lg'} 
-        ${weight ? weight : 'font-bold'} 
-        ${color ? color : 'text-gray-900'}
-        ${textAlign ? textAlign : 'text-center'}
-        `}
-      >
-        {children}
-      </Text>
-    </View>
-  );
-};
-export const ComponentText = ({
-  children,
-  size,
-  weight,
-  color,
-  textAlign,
-}: ITypes) => {
-  return (
-    <View>
-      <Text
-        className={`
-        ${size ? size : 'text-base'} 
-        ${weight ? weight : 'font-medium'} 
-        ${color ? color : 'text-gray-800'}
-        ${textAlign ? textAlign : 'text-center'}
-        `}
-      >
-        {children}
-      </Text>
-    </View>
-  );
-};
-export const ComponentTextButton = ({
-  children,
-  size,
-  weight,
-  color,
-  textAlign,
-}: ITypes) => {
-  return (
-    <View>
-      <Text
-        className={`
-        ${size ? size : 'text-base'} 
-        ${weight ? weight : 'font-semibold'} 
-        ${color ? color : 'text-white'}
-        ${textAlign ? textAlign : 'text-center'}
-        `}
-      >
-        {children}
-      </Text>
+      <Text className={`${textType[type]} ${styles}`}>{children}</Text>
     </View>
   );
 };
